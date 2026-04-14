@@ -18,8 +18,7 @@
     --gold:#c9a84c;--gold2:#f0cc6e;
     --teal:#3ecfb0;--purple:#8b7cf8;--red:#e05454;
     --muted:#6b7280;--text:#e8e4dc;--text2:#a09890;
-    --safe-top: env(safe-area-inset-top, 0px);
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
+
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   html,body{height:100%;overflow:hidden;}
@@ -30,10 +29,14 @@
   /* Layout */
   .top-bar{
     flex-shrink:0;
-    padding: calc(var(--safe-top) + 12px) 1.25rem 12px;
+    padding: 12px 1.25rem 12px;
     border-bottom:1px solid var(--border);
     background:var(--bg);
     position:relative;z-index:10;
+  }
+  @media all and (display-mode: standalone) {
+    .top-bar { padding-top: calc(env(safe-area-inset-top, 0px) + 12px); }
+    .bottom-nav { padding-bottom: env(safe-area-inset-bottom, 0px); }
   }
   .top-bar-inner{display:flex;align-items:center;gap:12px;}
   .app-title{font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold2);flex:1;text-shadow:0 0 20px rgba(201,168,76,0.3);}
@@ -155,7 +158,7 @@
   .btn-claim:active{background:rgba(201,168,76,0.22);}
 
   /* Toast */
-  .toast{position:fixed;bottom:calc(var(--safe-bottom) + 80px);left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg2);border:1px solid var(--gold);border-radius:10px;padding:0.7rem 1.25rem;font-family:'Space Mono',monospace;font-size:11px;color:var(--gold2);box-shadow:0 4px 30px rgba(0,0,0,0.6);transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);z-index:100;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
+  .toast{position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 80px);left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg2);border:1px solid var(--gold);border-radius:10px;padding:0.7rem 1.25rem;font-family:'Space Mono',monospace;font-size:11px;color:var(--gold2);box-shadow:0 4px 30px rgba(0,0,0,0.6);transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);z-index:100;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
   .toast.show{transform:translateX(-50%) translateY(0);}
 </style>
 </head>
