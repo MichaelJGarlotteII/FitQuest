@@ -410,7 +410,7 @@ function buildMap(){
     const act=state.monthActivity[k]||null;
     if(act)mc++;
     const cell=document.createElement('div');
-    cell.className='mday'+(act?` ${act}':'')+( d===today?' today':'');
+    cell.className='mday'+(act?` ${act}`:'')+( d===today?' today':'');
     cell.textContent=d;
     cell.onclick=()=>cycleDay(k,cell,d===today);
     grid.appendChild(cell);
